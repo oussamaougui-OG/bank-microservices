@@ -2,6 +2,7 @@ package ma.mundiapolis.ebank_service.mappers;
 
 import ma.mundiapolis.ebank_service.dtos.*;
 import ma.mundiapolis.ebank_service.entities.BankAccount;
+import ma.mundiapolis.ebank_service.models.CustomerDTO;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -21,8 +22,12 @@ public class BankAccountMapper {
                 .build();
     }
 
-    public BankAccountResponseDTO toDTO(BankAccount a) {
+    public BankAccountResponseDTO toDTO(BankAccount a, CustomerDTO customer) {
         return new BankAccountResponseDTO(a.getAccountId(), a.getBalance(), a.getCreatedAt(),
-                a.getCurrency(), a.getType(), a.getCustomerId());
+                a.getCurrency(), a.getType(), a.getCustomerId(), customer);
+    }
+
+    public BankAccountResponseDTO toDTO(BankAccount a) {
+        return toDTO(a, null);
     }
 }

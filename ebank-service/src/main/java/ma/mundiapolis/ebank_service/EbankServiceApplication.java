@@ -10,13 +10,18 @@ import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 import java.util.UUID;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+
+
 
 @SpringBootApplication
+@EnableFeignClients
 public class EbankServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EbankServiceApplication.class, args);
 	}
+
 
 	@Bean
 	CommandLineRunner start(BankAccountRepository repo) {
